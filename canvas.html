@@ -3,27 +3,39 @@
         <canvas id="folha" width="600" height="500"></canvas>
 
         <script>
-            var folhaDesenho = document.getElementById("folha");
-            var areaDesenho = folhaDesenho.getContext("2d");
 
-            var larguraCampo = 600;
-            var alturaCampo = 500;
-            var larguraLinha = 10;
-            var larguraBola = 5;
-            var alturaRaquete = 100;
+            window.onload = function(){
+                setInterval(executar, 1000 / 30);
+            }
 
-            areaDesenho.fillStyle = '#286047';
-            areaDesenho.fillRect(0, 0, larguraCampo, alturaCampo);
+            var posicaoBolaX = posicaoBolaY = 10;
 
-            areaDesenho.fillStyle = '#ffffff';
-            //linha
-            areaDesenho.fillRect(larguraCampo/2 - larguraLinha/2, 0, larguraLinha, alturaCampo);
-            //Raquete 1
-            areaDesenho.fillRect(0, 130, larguraLinha, alturaRaquete);
-            //Raquete 2
-            areaDesenho.fillRect(larguraCampo - larguraLinha, 200, larguraLinha, alturaRaquete);
-            //Bola "quadrada"
-            areaDesenho.fillRect(40, 40, larguraBola, larguraBola);
+            function executar(){
+
+                var folhaDesenho = document.getElementById("folha");
+                var areaDesenho = folhaDesenho.getContext("2d");
+
+                var larguraCampo = 600;
+                var alturaCampo = 500;
+                var espessuraRede = 5;
+
+                var diametroBola = 10;
+
+                areaDesenho.fillStyle = '#286047';  //cor verde
+                areaDesenho.fillRect(0, 0, larguraCampo, alturaCampo);
+
+                areaDesenho.fillStyle = '#ffffff'; //cor branca
+                //Rede
+                areaDesenho.fillRect(larguraCampo/2 - espessuraRede/2, 0, espessuraRede, alturaCampo);
+    
+                //Bola quadrada
+                areaDesenho.fillRect(posicaoBolaX - diametroBola / 2, posicaoBolaY - diametroBola / 2, diametroBola, diametroBola);
+
+                posicaoBolaX = posicaoBolaX + 1;
+                posicaoBolaY = posicaoBolaY + 1;
+
+                
+            }
         </script>
     </body>
 </html>
