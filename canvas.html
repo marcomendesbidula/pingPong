@@ -9,6 +9,7 @@
             }
 
             var posicaoBolaX = posicaoBolaY = 10;
+            var velocidadeBolaPosicaoX = velocidadeBolaPosicaoY = 5;
 
             function executar(){
 
@@ -21,7 +22,7 @@
 
                 var diametroBola = 10;
 
-                areaDesenho.fillStyle = '#0324fc';  //cor verde
+                areaDesenho.fillStyle = '#0324fc';  //cor azul
                 areaDesenho.fillRect(0, 0, larguraCampo, alturaCampo);
 
                 areaDesenho.fillStyle = '#ffffff'; //cor branca
@@ -31,10 +32,17 @@
                 //Bola quadrada
                 areaDesenho.fillRect(posicaoBolaX - diametroBola / 2, posicaoBolaY - diametroBola / 2, diametroBola, diametroBola);
 
-                posicaoBolaX = posicaoBolaX + 1;
-                posicaoBolaY = posicaoBolaY + 1;
+                posicaoBolaX = posicaoBolaX + velocidadeBolaPosicaoX;
+                posicaoBolaY = posicaoBolaY + velocidadeBolaPosicaoY;
 
-                
+                //Verifica se a bola bateu na lateral superior
+                if(posicaoBolaY < 0 && velocidadeBolaPosicaoY < 0) {
+                    velocidadeBolaPosicaoY = -velocidadeBolaPosicaoY;
+                }
+
+                if(posicaoBolaY > alturaCampo && velocidadeBolaPosicaoY > 0) {
+                    velocidadeBolaPosicaoY = -velocidadeBolaPosicaoY;
+                }
             }
         </script>
     </body>
